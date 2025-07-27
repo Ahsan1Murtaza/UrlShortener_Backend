@@ -5,7 +5,7 @@ const authenticationMiddleware = require('../middlewares/auth.middleware')
 const router = express.Router()
 
 router.get('/home',authenticationMiddleware, (req,res)=>{
-    res.send("Welcome To Home")
+    res.render('home')
 })
 
 module.exports = router

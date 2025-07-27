@@ -5,10 +5,10 @@ const authenticationMiddleware = require('../middlewares/auth.middleware')
 
 const router = express.Router()
 
-router.get('/login', (req, res)=>{res.send("Login Paged")})
+router.get('/login', (req, res)=>{res.render('login')})
 router.post('/login', loginUser)
 
-router.get('/register', (req, res)=>{res.send("Register Paged")})
+router.get('/register', (req, res)=>{res.render('register')})
 router.post('/register', registerUser)
 
 router.post('/logout', authenticationMiddleware, logoutUser)
