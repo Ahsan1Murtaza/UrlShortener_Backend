@@ -6,9 +6,9 @@
     <title>Home</title>
 </head>
 <body>
-    <form action="/shorten" method="post">
+    <form  id="urlForm">
 
-        <input type="text" name="originalUrl" id="">
+        <input type="text" name="originalUrl" id="originalUrl">
 
         <button>Generate</button>
     </form>
@@ -16,5 +16,45 @@
     <div class="urlsArea">
 
     </div>
+
+    <script>
+        const form = document.getElementById('urlForm')
+        const urlsArea = document.querySelector(".urlsArea")
+
+        form.addEventListener('submit', async(e)=>{
+            e.preventDefault()
+
+            const originalUrl = document.getElementById('originalUrl').value
+
+            if(!originalUrl){
+                alert("Plz enter a url")
+                return
+            }
+
+            const response = await fetch('/shorten', {
+                method: "POST",
+                headers: {
+                    "Content-Type" : "application/json"
+                },
+                body: JSON.stringify({originalUrl})
+            })
+
+            const data = await response.json()
+
+            // console.log(data)
+
+            if (response.ok){
+                const newDiv = document.createElement('div')
+
+                newDiv.innerHTML = `<p>Original Url : <a href="${data.originalUrl}" target="_blank">${data.originalUrl}</a></p> <p>Short Url : <a href="${data.shortenUrl}" target="_blank">${data.shortenUrl}</a></p> <hr>`
+
+                urlsArea.prepend(newDiv)
+                form.reset()
+            }
+            else{
+                alert("An error Occured")
+            }
+        })
+    </script>
 </body>
 </html>
