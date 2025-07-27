@@ -14,7 +14,9 @@
     </form>
 
     <div class="urlsArea">
-
+        <% urls.forEach(url => { %>
+            <p>Original Url : <a href="<%= url.originalUrl %>" target="_blank"><%= url.originalUrl %></a></p> <p>Short Url : <a href="<%= url.shortenUrl %>" target="_blank"><%= url.shortenUrl %></a></p> <hr>
+        <% }) %>
     </div>
 
     <script>
