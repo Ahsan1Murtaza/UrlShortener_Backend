@@ -1,4 +1,5 @@
 const {registerUserInDb, loginUserIfInDb} = require('../services/user.service')
+const generateTokenAndSetCookie = require('../utils/jsonTokenAndCookie')
 
 const loginUser = async(req, res)=>{
     const {email, password} = req.body
@@ -8,6 +9,10 @@ const loginUser = async(req, res)=>{
     if (!loggedInUser.success){
         return res.status(400).json({message: loggedInUser.message})
     }
+    
+    // Token
+    generateTokenAndSetCookie(loggedInUser.user, res)
+    
     
     return res.status(200).json({message: loggedInUser.message})
     
@@ -24,8 +29,18 @@ const registerUser = async(req, res)=>{
         return res.status(400).json({message: registerUser.message})
     }
     
-    res.status(200).json({message: registeredUser.message})
+    generateTokenAndSetCookie(registeredUser.user, res)
+
+    return res.status(200).json({message: registeredUser.message})
 
 }
 
-module.exports = {loginUser, registerUser}
+const logoutUser = async(req, res)=>{
+    
+
+    res.clearCookie('token',"")
+
+    return res.status(200).json({message: "Logged Out Successfully"})
+}
+
+module.exports = {loginUser, registerUser, logoutUser}

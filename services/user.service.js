@@ -2,12 +2,12 @@ const {userModel} = require('../models/user.model')
 
 const registerUserInDb = async (email, password)=>{
 
-    await userModel.create({
+    const newuser = await userModel.create({
         email,
         password
     })
 
-    return {success: true, message: "User Registered"}
+    return {success: true, message: "User Registered", user: {id: newuser._id, email: newuser.email}}
 }
 
 const loginUserIfInDb = async (email, password)=>{
@@ -25,7 +25,7 @@ const loginUserIfInDb = async (email, password)=>{
    
     }
 
-    return {success: true, message: "User Logged In"}
+    return {success: true, message: "User Logged In", user: {id: loggedInUser._id, email: loggedInUser.email}}
 }
 
 module.exports = {loginUserIfInDb, registerUserInDb}

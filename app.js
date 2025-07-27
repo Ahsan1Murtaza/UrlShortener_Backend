@@ -1,10 +1,13 @@
 // Third party imports
 const express = require('express')
 const dotenv = require('dotenv')
+const cookieParser = require('cookie-parser')
+const cors = require('cors')
 
 // Project imports
 const urlRouter = require('./routes/url.route')
 const userRouter = require('./routes/user.route')
+const indexRouter = require('./routes/index.route')
 const connectToDB = require('./config/db.config')
 
 
@@ -15,7 +18,9 @@ const app = express()
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
-// app.use('/', indexRouter)
+app.use(cookieParser())
+app.use(cors())
+app.use('/', indexRouter)
 app.use('/user', userRouter)
 app.use('/', urlRouter)
 

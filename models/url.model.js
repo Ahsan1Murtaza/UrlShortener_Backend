@@ -9,6 +9,11 @@ const urlSchema = mongoose.Schema({
     shortId:{
         type: String,
         required: true
+    },
+    userId:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'user',
+        required: [true, "User is required"]
     }
 })
 

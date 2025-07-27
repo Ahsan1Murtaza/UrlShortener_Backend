@@ -4,12 +4,13 @@ const {generateShortId, getOriginalUrl} = require("../services/url.service")
 const createShortId = async (req, res)=>{
     const {originalUrl} = req.body
     console.log("The original Url in controller is " + originalUrl)
+    console.log("User in Controller has id " + req.user.id)
 
     if (!originalUrl){
         return res.status(400).json({message: "Original Url is required"})
     }
 
-    const shortId = await generateShortId(originalUrl)
+    const shortId = await generateShortId(originalUrl, req)
 
     const shortenUrl = `${process.env.BASE_URL}/${shortId}`
 
