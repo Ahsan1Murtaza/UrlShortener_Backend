@@ -19,9 +19,17 @@
         <% }) %>
     </div>
 
+    <form action="/user/logout" method="POST">
+        <button type="submit">Logout</button>
+    </form>
+
+
     <script>
         const form = document.getElementById('urlForm')
         const urlsArea = document.querySelector(".urlsArea")
+
+        
+
 
         form.addEventListener('submit', async(e)=>{
             e.preventDefault()
@@ -57,6 +65,9 @@
                 alert("An error Occured")
             }
         })
+
+
+
     </script>
 </body>
 </html>

@@ -14,7 +14,8 @@ const loginUser = async(req, res)=>{
     generateTokenAndSetCookie(loggedInUser.user, res)
     
     
-    return res.status(200).json({message: loggedInUser.message})
+    // return res.status(200).json({message: loggedInUser.message})
+    return res.redirect('/home')
     
 }
 
@@ -31,7 +32,8 @@ const registerUser = async(req, res)=>{
     
     generateTokenAndSetCookie(registeredUser.user, res)
 
-    return res.status(200).json({message: registeredUser.message})
+    // return res.status(200).json({message: registeredUser.message})
+    return res.redirect('/home')
 
 }
 
@@ -40,7 +42,8 @@ const logoutUser = async(req, res)=>{
 
     res.clearCookie('token',"")
 
-    return res.status(200).json({message: "Logged Out Successfully"})
+    // return res.status(200).json({message: "Logged Out Successfully"})
+    return res.redirect('/user/login')
 }
 
 module.exports = {loginUser, registerUser, logoutUser}
