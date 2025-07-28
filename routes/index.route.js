@@ -21,6 +21,11 @@ router.get('/', (req, res)=>{
         return res.redirect('/user/login')
     }
 })
+
 router.get('/home',authenticationMiddleware, getAllUrlsFromDb)
+
+router.get('/purchase', authenticationMiddleware, (req, res)=>{
+    res.render('purchase')
+})
 
 module.exports = router

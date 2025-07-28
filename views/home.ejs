@@ -8,6 +8,8 @@
 <body>
 
     <h1>WELCOME <%= email %></h1>
+    <h2>Limits Reached <%= urlCount %></h2>
+    <h2>Total Limits <%= totalLimits %></h2>
 
     <form  id="urlForm">
 
@@ -63,6 +65,7 @@
 
                 urlsArea.prepend(newDiv)
                 form.reset()
+                window.location.reload()
             }
             else{
                 alert("An error Occured")

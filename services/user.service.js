@@ -7,7 +7,7 @@ const registerUserInDb = async (email, password)=>{
         password
     })
 
-    return {success: true, message: "User Registered", user: {id: newUser._id, email: newUser.email}}
+    return {success: true, message: "User Registered", user: {id: newUser._id, email: newUser.email, plan: newUser.plan, urlCount: newUser.urlCount}}
 }
 
 const loginUserIfInDb = async (email, password)=>{
@@ -25,7 +25,7 @@ const loginUserIfInDb = async (email, password)=>{
    
     }
 
-    return {success: true, message: "User Logged In", user: {id: loggedInUser._id, email: loggedInUser.email}}
+    return {success: true, message: "User Logged In", user: {id: loggedInUser._id, email: loggedInUser.email, plan: loggedInUser.plan, urlCount: loggedInUser.urlCount}}
 }
 
 module.exports = {loginUserIfInDb, registerUserInDb}

@@ -1,8 +1,11 @@
 
 const {generateShortId, getOriginalUrl} = require("../services/url.service")
+const {userModel} = require('../models/user.model')
+const generateUpdatedToken = require('../utils/generateUpdatedToken')
 
 const createShortId = async (req, res)=>{
     const {originalUrl} = req.body
+    const userId = req.user.id
     // console.log("The original Url in controller is " + originalUrl)
     // console.log("User in Controller has id " + req.user.id)
 
@@ -14,6 +17,9 @@ const createShortId = async (req, res)=>{
 
     const shortenUrl = `${process.env.BASE_URL}/${shortId}`
 
+    await userModel.findByIdAndUpdate(userId, {$inc: {urlCount: 1}})
+
+    await generateUpdatedToken(userId, res)
 
     res.status(201).json({originalUrl, shortenUrl})
 }

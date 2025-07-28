@@ -11,6 +11,15 @@ const userSchema = mongoose.Schema({
         type: String,
         trim: true,
         required: true
+    },
+    plan :{
+        type: String,
+        enum: ["free", "premium"],
+        default: "free"
+    },
+    urlCount: {
+        type: Number,
+        default: 0
     }
 })
 
