@@ -7,7 +7,7 @@ const generateShortId = async (originalUrl, id)=>{
     const shortenId = shortId()
 
 
-    console.log("In Service Layer " + id)
+    // console.log("In Service Layer " + id)
 
     // Saving in DB
     await urlModel.create({
@@ -26,7 +26,7 @@ const getOriginalUrl = async (shortenId)=>{
     })
 
 
-    console.log("The url entry is " + urlEntry)
+    // console.log("The url entry is " + urlEntry)
     if (!urlEntry){
         throw new Error("Url Not Found")
     }

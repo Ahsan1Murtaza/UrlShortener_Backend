@@ -20,8 +20,8 @@ const loginUser = async(req, res)=>{
 
 const registerUser = async(req, res)=>{
     const {email, password} = req.body
-    console.log('Email', email)
-    console.log('password', password)
+    // console.log('Email', email)
+    // console.log('password', password)
     
     const registeredUser = await registerUserInDb(email, password)
     

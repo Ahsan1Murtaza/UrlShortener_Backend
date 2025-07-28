@@ -11,9 +11,9 @@ const verifyToken = (req, res, next)=>{
 
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET)
-        console.log("Decoded user in token is " + decoded.id)
+        // console.log("Decoded user in token is " + decoded.id)
         req.user = decoded
-        console.log("Req.user decoded is " + req.user)
+        // console.log("Req.user decoded is " + req.user)
         return next()
         
     } catch (error) {
