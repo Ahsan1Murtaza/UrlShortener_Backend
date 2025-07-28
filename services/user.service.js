@@ -2,12 +2,12 @@ const {userModel} = require('../models/user.model')
 
 const registerUserInDb = async (email, password)=>{
 
-    const newuser = await userModel.create({
+    const newUser = await userModel.create({
         email,
         password
     })
 
-    return {success: true, message: "User Registered", user: {id: newuser._id, email: newuser.email}}
+    return {success: true, message: "User Registered", user: {id: newUser._id, email: newUser.email}}
 }
 
 const loginUserIfInDb = async (email, password)=>{

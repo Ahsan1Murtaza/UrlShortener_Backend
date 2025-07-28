@@ -2,7 +2,7 @@ const {findAllUrlsFromDb} = require('../services/index.service')
 
 const getAllUrlsFromDb = async (req, res)=>{
 
-    const allUrls = await findAllUrlsFromDb(req)
+    const allUrls = await findAllUrlsFromDb(req.user.id)
 
     if (!allUrls.success){
         return res.render('home', {urls: []})

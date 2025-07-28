@@ -1,9 +1,9 @@
 const {urlModel} = require('../models/url.model')
 
-const findAllUrlsFromDb = async(req)=>{
+const findAllUrlsFromDb = async(id)=>{
 
     const allUrls = await urlModel.find({
-        userId: req.user.id
+        userId: id
     })
 
     if (!allUrls){

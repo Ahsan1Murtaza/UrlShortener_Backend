@@ -2,18 +2,18 @@ const {shortId} = require('../utils/shortId.util')
 const {urlModel} = require('../models/url.model')
 
 
-const generateShortId = async (originalUrl, req)=>{
+const generateShortId = async (originalUrl, id)=>{
     
     const shortenId = shortId()
 
 
-    console.log("In Service Layer " + req.user.id)
+    console.log("In Service Layer " + id)
 
     // Saving in DB
     await urlModel.create({
         originalUrl,
         shortId: shortenId,
-        userId: req.user.id
+        userId: id
     })
 
     return shortenId

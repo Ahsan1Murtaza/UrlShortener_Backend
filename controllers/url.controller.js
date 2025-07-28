@@ -10,7 +10,7 @@ const createShortId = async (req, res)=>{
         return res.status(400).json({message: "Original Url is required"})
     }
 
-    const shortId = await generateShortId(originalUrl, req)
+    const shortId = await generateShortId(originalUrl, req.user.id)
 
     const shortenUrl = `${process.env.BASE_URL}/${shortId}`
 
