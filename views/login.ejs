@@ -4,13 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <style>
+        #loginForm{
+            border: 1px solid black;
+            width: 300px;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            gap: 5px;
+        }
+        .input{
+            width: 80%;
+            height: 30px;
+        }
+    </style>
 </head>
 <body>
-    <form action="/user/login" method="post">
-        <input type="email" name="email" id="">
-        <input type="password" name="password" id="">
+    <form action="/user/login" method="post" id="loginForm">
+        <h3>LOGIN</h3>
+        <label for="email">Email Address</label>
+        <input type="email" name="email" id="email" class="input">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" class="input">
 
         <button>Login</button>
+    </form>
+    <br><br>
+    <form action="/user/register" method="GET">
+        <button type="submit">Dont have an account? Register</button>
     </form>
 </body>
 </html>
